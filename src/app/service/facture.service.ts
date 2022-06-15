@@ -18,19 +18,19 @@ export class FactureService {
   constructor(private http: HttpClient, private authService: AuthentifierService) {
   }
   chercherFactureRefFacture(id: number): Observable<Facture[]> {
-   
+
 
     const url = `${this.apiURL}/refFacture/${id}`;
     return this.http.get<Facture[]>(url);
   }
   chercherFactureRefContrat(id: number): Observable<Facture[]> {
-   
+
 
     const url = `${this.apiURL}/refContrat/${id}`;
     return this.http.get<Facture[]>(url);
   }
   chercherFactureRefclient(id: number): Observable<Facture[]> {
-   
+
 
     const url = `${this.apiURL}/refClient/${id}`;
     return this.http.get<Facture[]>(url);

@@ -16,18 +16,18 @@ export class AgentService {
   constructor(private http: HttpClient, private authService : AuthentifierService) {
   }
   listeAgents(): Observable<Agent[]> {
-  
+
     return this.http.get<Agent[]>(this.apiURL+"/listerAgents"
-    
+
     );
-  
+
   }
   ajouterAgent(agent: Agent): Observable<Agent> {
-  
+
     return this.http.post<Agent>(this.apiURL+"/ajouterAgent",agent
-    
+
     );
- 
+
   }
 
 
@@ -36,7 +36,7 @@ export class AgentService {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = {
-      headers:new HttpHeaders({"Content-Type": "application/json","Authorization":jwt}), 
+      headers:new HttpHeaders({"Content-Type": "application/json","Authorization":jwt}),
       withCredentials: true
     };
 
@@ -45,21 +45,21 @@ export class AgentService {
 
   activerAgent(id: number) {
     const url = `${this.apiURL}/activerAgent/${id}`;
-   
+
     return this.http.put(url,null);
 
   }
 
   consulterAgent(idU: number): Observable<Agent> {
     const url = `${this.apiURL}/consulterAgent/${idU}`;
-   
+
     return this.http.get<Agent>(url
       );
   }
 
   updateAgent(agent: Agent): Observable<Agent> {
- 
-   
+
+
     return this.http.put<Agent>(this.apiURL + '/modifierAgent', agent
     );
   }

@@ -15,20 +15,20 @@ export class CaissierService {
   constructor(private http: HttpClient, private authService : AuthentifierService) {
   }
   listeCaissiers(): Observable<Caissier[]> {
-    
+
     return this.http.get<Caissier[]>(this.apiURL+"/listerCaissiers"
     );
-  
+
 
   }
   listeCaissiersByEtat(name): Observable<any> {
-    
+
 
     const url = `${this.apiURL+"/listerCaissierByEtat"}/${name}`;
     return this.http.get<Caissier[]>(url);
   }
   ajouterCaissier(caissier: Caissier): Observable<Caissier> {
-    
+
     return this.http.post<Caissier>(this.apiURL+"/ajouterCaissier",caissier
     );
 
@@ -37,21 +37,21 @@ export class CaissierService {
 
   desactiverCaissier(id: number):Observable<Caissier> {
     const url = `${this.apiURL}/desactiverCaissier/${id}`;
-     
+
     return this.http.put<Caissier>(url,null);
 
   }
   activerCaissier(id: number) {
     const url = `${this.apiURL}/activerCaissier/${id}`;
-     
+
     return this.http.put(url,null);
 
-   
+
   }
 
   consulterCaissier(matricule: number): Observable<Caissier> {
     const url = `${this.apiURL}/consulterCaissier/${matricule}`;
-     
+
     return this.http.get<Caissier>(url);
 
 
